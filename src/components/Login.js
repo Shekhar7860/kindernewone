@@ -1,15 +1,21 @@
 import React, { Component} from 'react'
-import {View, Text, Image,TextInput, Alert} from 'react-native'
+import {View, Text, Image,TextInput, Alert, TouchableOpacity} from 'react-native'
 import styles from "../styles/styles";
-
+import Service from "../services/Service";
 export default class Login extends Component {
 
      constructor (props) {
     super (props)
     this.state = {
       email : "",
-      password : ""
+      password : "",
+      loading: false
     }
+    service = new Service()
+  }
+  componentDidMount = () => {
+    this.setState({loading : true})
+    setTimeout (() => this.setState({loading : false }), 2000)
   }
     goToPage = (page) => {
       if(this.state.email && this.state.password)
@@ -18,36 +24,43 @@ export default class Login extends Component {
       }
       else
       {
-        if(this.state.email == "" && this.state.password == "") {
+        if(!this.state.email  && !this.state.password ) {
              Alert.alert("please enter email & password both")
         }
-        if(this.state.email == "")
+       else  if(!this.state.email )
         {
             Alert.alert("please enter email")
         }
-         if(this.state.password == "")
+         else if(!this.state.password )
         {
             Alert.alert("please enter password")
         }
       }
        
     }
+    LoginFacebook = () => {
+      Alert.alert("Logging With Facebook")
+    }
+
+    LoginGoogle = () => {
+      Alert.alert("Logging With Google")
+    }
 render () { 
-return (<View>
+return (<View style={styles.container}>
     <Image  style={styles.imageWidth} source={require('../images/kinder.jpg')} ></Image>
-    <View style={{marginTop:10}}>
+   
     <TextInput value={this.state.email} onChangeText={(text)=>this.setState({ email:text})} style={styles.input} placeholder="Email"  placeholderTextColor = "black"></TextInput>
-    <TextInput value={this.state.password} style={styles.input} onChangeText={(text)=>this.setState({ email:text})} placeholder="Password"  placeholderTextColor = "black" secureTextEntry={true}></TextInput>
+    <TextInput value={this.state.password} style={styles.input} onChangeText={(text)=>this.setState({ password:text})} placeholder="Password"  placeholderTextColor = "black" secureTextEntry={true}></TextInput>
      <TouchableOpacity style={styles.buttonBackground}>
         <Text onPress={this.goToPage.bind(this, 'Home')} style={styles.welcomeLoginText}>Login</Text>
         </TouchableOpacity>
         <Text style={styles.textStyle2}>OR</Text>
         <TouchableOpacity style={styles.buttonBackgroundfb}>
-        <Text onPress={this.goToPage.bind(this, 'Register')}>Facebook</Text>
+        <Text style={styles.textWhite} onPress={this.LoginFacebook.bind(this, 'Register')}>Facebook</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonBackgroundgplus}>
-        <Text onPress={this.goToPage.bind(this, 'Register')}>Google</Text>
+        <Text style={styles.textWhite} onPress={this.LoginGoogle.bind(this, 'Register')}>Google</Text>
         </TouchableOpacity>
-        </View></View>)} 
+        </View>)} 
       
 }

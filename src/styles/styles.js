@@ -6,9 +6,7 @@ export default styles = StyleSheet.create({
   },
  
 imageWidth :{
-  marginTop:100,
-  width : 350,
-  height : 100
+  width:'90%', height:'30%', alignSelf:'center', marginTop:20
 },
 imageWidthList :{
  
@@ -23,11 +21,17 @@ textStyle2 : {
   marginTop:15,
   alignSelf : 'center'
 }, 
+splashTextFont: {
+  textAlign: 'center', fontSize:50, alignSelf:'center', width:'100%', color:'red',
+  fontFamily: 'Amiko'
+},
+
 welcomeTextStyle : {
+  textAlign: 'center', 
   marginTop:10,
-  alignSelf : 'center',
   color : '#ff5a66',
-  fontSize:37
+  fontSize:40,
+  fontFamily: 'Amiko'
 },
 welcomeLoginText :{
   color:'white',
@@ -36,10 +40,7 @@ welcomeLoginText :{
 textWidth : {
   width: '85%'
 },
-sectionDimension : {
-  width:'70%',
-  margin:10
-},
+
 row : {
   flexDirection : 'row',
 },
@@ -54,6 +55,13 @@ pickerStyle:{
   width: "80%",  
   color: '#344953',  
   justifyContent: 'center',  
+},
+starDimension : {
+width:'30%'
+},
+sectionDimension : {
+  width:'70%',
+  margin:10
 },
 input : {
   marginTop:10,
@@ -74,8 +82,21 @@ dropDown : {
   height:50
   
 },
+myStarStyle: {
+  color: 'yellow',
+  backgroundColor: 'transparent',
+  textShadowColor: 'black',
+  textShadowOffset: {width: 1, height: 1},
+  textShadowRadius: 2
+},
+myEmptyStarStyle: {
+  color: 'white',
+},
+textWhite:{
+  color :"white"
+},
 buttonBackground:{
- marginTop:30,
+ marginTop:10,
  alignSelf:'center',
   backgroundColor:'#e84393',
   width:"60%",

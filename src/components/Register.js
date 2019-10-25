@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import {View, Text,TextInput, Image, TouchableOpacity} from 'react-native'
+import {View, Text,TextInput, Image, TouchableOpacity, Alert} from 'react-native'
 import styles from "../styles/styles";
 export default class Register extends Component {
      constructor (props) {
@@ -12,42 +12,44 @@ export default class Register extends Component {
     }
   }
     goToPage = (page) => {
-         if(this.state.email && this.state.password && this.state.username && this.state.confirmPassword)
+       
+
+      if(this.state.email && this.state.password && this.state.username && this.state.confirmPassword)
       {
          this.props.navigation.navigate(page)
       }
       else
       {
-        if(this.state.email == "" && this.state.password == "" &&  this.state.username == "" && this.state.confirmPassword == "") {
-             Alert.alert("please enter email & password both")
+        if(!this.state.email && !this.state.password && !this.state.username && !this.state.confirmPassword) {
+             Alert.alert("please enter all details")
         }
-        if(this.state.email == "")
+       else  if(!this.state.email )
         {
             Alert.alert("please enter email")
         }
-         if(this.state.password == "")
+         else if(!this.state.password )
         {
             Alert.alert("please enter password")
         }
-         if(this.state.username == "")
+        else  if(!this.state.username )
         {
-            Alert.alert("please enter username")
+            Alert.alert("please enter email")
         }
-         if(this.state.confirmPassword == "")
+         else if(!this.state.confirmPassword )
         {
-            Alert.alert("please enter all details")
+            Alert.alert("please enter confirm password")
         }
       }
         
     }
 render () { 
-return (<View>
+return (<View style={styles.container}>
       <Image  style={styles.imageWidth} source={require('../images/kinder.jpg')} ></Image>
     <View style={{marginTop:10}}>
-    <TextInput style={styles.input} placeholder="Email"  placeholderTextColor = "black"></TextInput>
-    <TextInput style={styles.input} placeholder="UserName"  placeholderTextColor = "black"></TextInput>
-    <TextInput style={styles.input} placeholder="Password"  placeholderTextColor = "black" secureTextEntry={true}></TextInput>
-    <TextInput style={styles.input} placeholder="Confirm Password"  placeholderTextColor = "black" secureTextEntry={true}></TextInput>
+    <TextInput style={styles.input} placeholder="Email" onChangeText={(text)=>this.setState({ email:text})} placeholderTextColor = "black"></TextInput>
+    <TextInput style={styles.input} placeholder="UserName" onChangeText={(text)=>this.setState({ username:text})} placeholderTextColor = "black"></TextInput>
+    <TextInput style={styles.input} placeholder="Password" onChangeText={(text)=>this.setState({ password:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
+    <TextInput style={styles.input} placeholder="Confirm Password" onChangeText={(text)=>this.setState({ confirmPassword:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
     <TouchableOpacity style={styles.buttonBackground}>
         <Text onPress={this.goToPage.bind(this, 'Select')} style={styles.welcomeLoginText}>SignUp</Text>
         </TouchableOpacity>

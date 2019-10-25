@@ -4,7 +4,10 @@ import styles from "../styles/styles";
 import {  Card, Divider, SearchBar, List, ListItem  } from 'react-native-elements';
 import MapView from 'react-native-maps'
 import Geolocation from '@react-native-community/geolocation';
+import Stars from 'react-native-stars';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Service from "../services/Service";
+
 export default class Home extends Component {
 
   constructor (props) {
@@ -14,7 +17,8 @@ export default class Home extends Component {
       mapView : false, 
       longitude : "", 
       latitude : "",
-      places : [1, 2, 3]
+      places : [1, 2],
+      
     }
     service = new Service()
   }
@@ -43,6 +47,8 @@ export default class Home extends Component {
         
     );
     }
+
+   
     getCategoriesPlaces = () => {
       service.getCategories().then(res => {
         console.log("myres", res);
@@ -51,8 +57,8 @@ export default class Home extends Component {
     }
     getProfiles = () => {
       service.getProfiles().then(res => {
-        console.log("reslocal", res);
-       
+        console.log("new", res);
+        this.setState({places : res.profileList})
       });
     }
    
@@ -61,7 +67,7 @@ export default class Home extends Component {
 render () { 
 return (<View style={styles.container}>
      <SearchBar
-          placeholder="Search Products..."
+          placeholder="Search "
           lightTheme
           round
           
@@ -95,20 +101,37 @@ return (<View style={styles.container}>
      <TouchableOpacity style={styles.imageDimension}>
      <Image  style={styles.imageWidthList} source={require('../images/pro.jpg')} ></Image>
      </TouchableOpacity>
-     <View style={styles.sectionDimension}><Text>Name</Text><Text style={styles.textWidth}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis nato</Text></View></View></View>
+     <View style={styles.sectionDimension}>
+       <View style={{width:'100%', flexDirection:'row', flex:1}}>
+            <Text style={{width:'30%'}}>{item.profileName}</Text>
+            <View  style={{width:'70%'}}><Stars
+        default={2.5}
+        count={5}
+        half={true}
+        fullStar={<Icon name={'star'} size={22} style={[styles.myStarStyle]}/>}
+        emptyStar={<Icon name={'star-outline'} size={22}style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
+        halfStar={<Icon name={'star-half'} size={22} style={[styles.myStarStyle]}/>}
+      />
+      </View>
+       </View>
+       <Text style={styles.textWidth}>{item.profileDescription}</Text>
+       </View>
+      
+         </View></View>
   
   }
   keyExtractor={item => item.email}
 /> 
 </View>: <MapView
-  style={{  height: 400,
-    width: 400}}
+  style={{  
+    flex:1,
+  marginTop:20}}
     zoomEnabled={true}
 initialRegion={{
   latitude:this.state.latitude,
   longitude:this.state.longitude,
-  latitudeDelta: 1,
-  longitudeDelta: 1,
+  latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
 }}
 />}
     

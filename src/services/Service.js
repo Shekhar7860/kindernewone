@@ -75,13 +75,19 @@ validateEmail = (email) => {
     return (false)
 };
 
-login = (mobile, password) => 
+login = (email, password) => 
 {
-  var data = {
-    email: mobile,
-    password: password,
-   }
- return  fetch(constants.apiUrl + '/user/signin',
+ 
+
+   let formdata = new FormData();
+
+formdata.append("email", email)
+formdata.append("password", password)
+formdata.append("platform", "Android")
+formdata.append("token", "64663")
+formdata.append("longitude", "60.66")
+formdata.append("latitude", "40,4")
+ return  fetch(apiUrl + '/Login',
     {
       method: "POST",
       headers: {
@@ -190,33 +196,38 @@ findFreelancer = (token, category) =>
 }
 
 getProfiles = () => {
-//   var data = {
-//     categoryId:1,
-//     userId:1
-//    }
-//   console.log(data)
-//  return  fetch(apiUrl + '/Profiles',
-//     {
-//       method: "POST",
-//       headers: {
-//        "Accept": "application/json",
-//        "Content-Type": "application/json"
-//       },
-//      body: JSON.stringify(data)
-//    }).then((response) => 
-//    response.json())
-//    .catch((error) => {
-//      console.error(error);
-//    });
- var token = 1
-   return fetch(apiUrl + `/Profiles?&categoryId=${token}&userId=${token}`,
-   {
-     method: "GET"
-  }).then((response) => 
-  response.json())
-  .catch((error) => {
-    console.error(error);
-  });
+  var data = {
+    userId:1,
+    categoryId:1
+   }
+   let formdata = new FormData();
+
+formdata.append("userId", 1)
+formdata.append("categoryId", 1)
+
+  console.log(apiUrl + '/Profiles')
+ return  fetch(apiUrl + '/Profiles',
+    {
+      method: "POST",
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      
+      },
+     body: formdata
+   }).then((response) => 
+   response.json())
+   .catch((error) => {
+     console.error(error);
+   });
+//  var token = 1
+//    return fetch(apiUrl + `/Profiles?&categoryId=${token}&userId=${token}`,
+//    {
+//      method: "GET"
+//   }).then((response) => 
+//   response.json())
+//   .catch((error) => {
+//     console.error(error);
+//   });
 }
 getFreelancerDetails = (token, id) => {
   return  fetch(constants.apiUrl + `/jobs-details?&api_token=${token}&job_id=${id}`,

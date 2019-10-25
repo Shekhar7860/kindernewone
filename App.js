@@ -10,14 +10,18 @@ import { createAppContainer} from 'react-navigation';
 import { createStackNavigator} from 'react-navigation-stack';
 import { StyleSheet} from 'react-native'
 import Welcome from './src/components/Welcome'
+import Splash from './src/components/Splash'
 import Login from './src/components/Login'
 import Register from './src/components/Register'
 import SelectItems from './src/components/SelectItems'
 import Home from './src/components/Home'
 const App = createStackNavigator({
-  Welcome: {
-    screen: Home,
+  Splash: {
+    screen: Splash,
   },
+  Welcome: {
+    screen: Welcome,
+  }, 
   Login: {
     screen: Login,
   },

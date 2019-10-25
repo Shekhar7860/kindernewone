@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import {View, Text,TextInput, Image, TouchableOpacity, Picker} from 'react-native'
+import {View, Text,TextInput, Image, TouchableOpacity, Picker, Alert} from 'react-native'
 import styles from "../styles/styles";
 import { Dropdown } from 'react-native-material-dropdown';
 export default class SelectItems extends Component {
