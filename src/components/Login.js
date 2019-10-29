@@ -51,15 +51,15 @@ return (<View style={styles.container}>
    
     <TextInput value={this.state.email} onChangeText={(text)=>this.setState({ email:text})} style={styles.input} placeholder="Email"  placeholderTextColor = "black"></TextInput>
     <TextInput value={this.state.password} style={styles.input} onChangeText={(text)=>this.setState({ password:text})} placeholder="Password"  placeholderTextColor = "black" secureTextEntry={true}></TextInput>
-     <TouchableOpacity style={styles.buttonBackground}>
-        <Text onPress={this.goToPage.bind(this, 'Home')} style={styles.welcomeLoginText}>Login</Text>
+     <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Home')}>
+        <Text  style={styles.welcomeLoginText}>Login</Text>
         </TouchableOpacity>
         <Text style={styles.textStyle2}>OR</Text>
-        <TouchableOpacity style={styles.buttonBackgroundfb}>
-        <Text style={styles.textWhite} onPress={this.LoginFacebook.bind(this, 'Register')}>Facebook</Text>
+        <TouchableOpacity style={styles.buttonBackgroundfb}  onPress={this.LoginFacebook.bind(this)}>
+        <Text style={styles.textWhite}>Facebook</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBackgroundgplus}>
-        <Text style={styles.textWhite} onPress={this.LoginGoogle.bind(this, 'Register')}>Google</Text>
+        <TouchableOpacity style={styles.buttonBackgroundgplus} onPress={this.LoginGoogle.bind(this)}>
+        <Text style={styles.textWhite} >Google</Text>
         </TouchableOpacity>
         </View>)} 
       

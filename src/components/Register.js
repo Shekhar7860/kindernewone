@@ -50,8 +50,8 @@ return (<View style={styles.container}>
     <TextInput style={styles.input} placeholder="UserName" onChangeText={(text)=>this.setState({ username:text})} placeholderTextColor = "black"></TextInput>
     <TextInput style={styles.input} placeholder="Password" onChangeText={(text)=>this.setState({ password:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
     <TextInput style={styles.input} placeholder="Confirm Password" onChangeText={(text)=>this.setState({ confirmPassword:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
-    <TouchableOpacity style={styles.buttonBackground}>
-        <Text onPress={this.goToPage.bind(this, 'Select')} style={styles.welcomeLoginText}>SignUp</Text>
+    <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Select')}>
+        <Text  style={styles.welcomeLoginText}>SignUp</Text>
         </TouchableOpacity>
         
         </View></View>)} 

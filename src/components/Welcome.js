@@ -25,11 +25,11 @@ return (<View style={styles.container}>
     <Image  style={styles.imageWidth} source={require('../images/kinder.jpg')} ></Image>
     <Text style={styles.textStyle}>for creative kids</Text>
     <Text style={styles.welcomeTextStyle}>Welcome To Your School Finding APP</Text>
-     <TouchableOpacity style={styles.buttonBackground}>
-        <Text  onPress={this.goToPage.bind(this, 'Login')} style={styles.welcomeLoginText}>Login</Text>
+     <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Login')}>
+        <Text   style={styles.welcomeLoginText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBackgroundSignUp}>
-        <Text onPress={this.goToPage.bind(this, 'Register')}>Sign Up</Text>
+        <TouchableOpacity style={styles.buttonBackgroundSignUp} onPress={this.goToPage.bind(this, 'Register')}>
+        <Text >Sign Up</Text>
         </TouchableOpacity>
         <Loader
           loading={this.state.loading} /></View>)} 

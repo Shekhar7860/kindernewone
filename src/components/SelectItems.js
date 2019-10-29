@@ -48,8 +48,8 @@ return (<View>
       />
    
    
-    <TouchableOpacity style={styles.buttonBackgroundNext}>
-        <Text onPress={this.goToPage.bind(this, 'Home')} style={styles.welcomeLoginText}>Next</Text>
+    <TouchableOpacity style={styles.buttonBackgroundNext} onPress={this.goToPage.bind(this, 'Home')}>
+        <Text  style={styles.welcomeLoginText}>Next</Text>
         </TouchableOpacity>
         
         </View></View>)} 
