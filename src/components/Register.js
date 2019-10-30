@@ -16,8 +16,19 @@ export default class Register extends Component {
 
       if(this.state.email && this.state.password && this.state.username && this.state.confirmPassword)
       {
+        if ( !service.validateEmail(this.state.email)) {
+          Alert.alert("please enter valid email")
+        } 
+        else if ( this.state.password != this.state.confirmPassword) {
+          Alert.alert("password and confirmpassword do not match")
+        } 
+        else
+        {
          this.props.navigation.navigate(page)
+        }
+         
       }
+
       else
       {
         if(!this.state.email && !this.state.password && !this.state.username && !this.state.confirmPassword) {
@@ -39,6 +50,7 @@ export default class Register extends Component {
         {
             Alert.alert("please enter confirm password")
         }
+       
       }
         
     }
@@ -47,10 +59,10 @@ return (<View style={styles.container}>
       <Image  style={styles.imageWidth} source={require('../images/kinder.jpg')} ></Image>
     <View style={{marginTop:10}}>
     <TextInput style={styles.input} placeholder="Email" onChangeText={(text)=>this.setState({ email:text})} placeholderTextColor = "black"></TextInput>
-    <TextInput style={styles.input} placeholder="UserName" onChangeText={(text)=>this.setState({ username:text})} placeholderTextColor = "black"></TextInput>
+    <TextInput style={styles.input} placeholder="User Name" onChangeText={(text)=>this.setState({ username:text})} placeholderTextColor = "black"></TextInput>
     <TextInput style={styles.input} placeholder="Password" onChangeText={(text)=>this.setState({ password:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
     <TextInput style={styles.input} placeholder="Confirm Password" onChangeText={(text)=>this.setState({ confirmPassword:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
-    <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Select')}>
+    <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Home')}>
         <Text  style={styles.welcomeLoginText}>SignUp</Text>
         </TouchableOpacity>
         

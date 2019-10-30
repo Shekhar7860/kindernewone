@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import {View, Text, Image,TextInput,  TouchableOpacity, FlatList} from 'react-native'
+import {View, Text, Image,TextInput,  TouchableOpacity, FlatList,  Modal, TouchableHighlight} from 'react-native'
 import styles from "../styles/styles";
 import {  Card, Divider, SearchBar, List, ListItem  } from 'react-native-elements';
 import MapView from 'react-native-maps'
@@ -18,6 +18,7 @@ export default class Home extends Component {
       longitude : "", 
       latitude : "",
       places : [1, 2],
+      modalVisible: false
       
     }
     service = new Service()
@@ -58,22 +59,56 @@ export default class Home extends Component {
     getProfiles = () => {
       service.getProfiles().then(res => {
         console.log("new", res);
-        this.setState({places : res.profileList})
+     //   this.setState({places : res.profileList})
       });
     }
    
+    searchFilterFunction = text => {
+      this.setState({
+         value: text,
+       });
    
+      
+     }
+
+     toggleModal(visible) {
+      this.setState({ modalVisible: visible });
+   }
     
 render () { 
 return (<View style={styles.container}>
-     <SearchBar
-          placeholder="Search "
+     {/* <SearchBar
+          placeholder="Kindergartens"
           lightTheme
           round
-          
+          onChangeText={text => this.searchFilterFunction(text)}
           autoCorrect={false}
+          value={this.state.value}
+          icon = {{type: 'material-community', color: '#86939e', name: 'share' }}
+  
           
-        />
+        /> */}
+         <Modal animationType = {"slide"} transparent = {false}
+               visible = {this.state.modalVisible}
+               onRequestClose = {() => { console.log("Modal has been closed.") } }>
+               
+               <View style = {styles.modal}>
+                  <Text style = {styles.text}>Filter Options</Text>
+                  
+                  <TouchableHighlight onPress = {() => {
+                     this.toggleModal(!this.state.modalVisible)}}>
+                     
+                     <Text style = {styles.text}>Close Modal</Text>
+                  </TouchableHighlight>
+               </View>
+            </Modal>
+            
+       
+        <View style={{width: '95%', flexDirection :'row', borderWidth : 1, margin : 10, alignSelf : 'center', borderRadius : 30, height :50}}>
+        <Image  style={styles.icon} source={require('../images/search.png')} ></Image>
+        <TextInput style={styles.input2} placeholder="Kindergartens" onChangeText={(text)=>this.setState({ username:text})} placeholderTextColor = "black"></TextInput>
+        <TouchableHighlight onPress = {() => {this.toggleModal(true)}}><Image  style={styles.icon} source={require('../images/filter.png')} ></Image></TouchableHighlight>
+        </View>
          <View style={{backgroundColor:"white" ,width:'100%',height:50,marginLeft:0,flexDirection:"row",justifyContent: "center",alignItems: "center"}}>
 <TouchableOpacity onPress={this.setView.bind(this, 'list')} style={{backgroundColor:this.state.listView == true ? "#e84393" : "white",width:"45%",height:48,justifyContent:"center",alignItems:"center",marginTop:2,  borderWidth:1}}>
 <View>

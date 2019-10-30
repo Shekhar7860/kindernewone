@@ -21,7 +21,13 @@ export default class Login extends Component {
     goToPage = (page) => {
       if(this.state.email && this.state.password)
       {
+        if (!service.validateEmail(this.state.email)) {
+          Alert.alert("please enter valid email")
+        } 
+        else
+        {
          this.props.navigation.navigate(page)
+        }
       }
       else
       {

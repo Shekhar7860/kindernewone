@@ -195,6 +195,17 @@ findFreelancer = (token, category) =>
    });
 }
 
+return (res) {
+console.log(res, 'sjksjsj')
+if(res.status == 200)
+{
+  return res.json()
+}
+else
+{
+  return "error"
+}
+}
 getProfiles = () => {
   var data = {
     userId:1,
@@ -215,7 +226,7 @@ formdata.append("categoryId", 1)
       },
      body: formdata
    }).then((response) => 
-   response.json())
+   this.return(response))
    .catch((error) => {
      console.error(error);
    });

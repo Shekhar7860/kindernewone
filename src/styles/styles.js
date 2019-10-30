@@ -8,6 +8,12 @@ export default styles = StyleSheet.create({
 imageWidth :{
   width:'90%', height:'30%', alignSelf:'center', marginTop:20
 },
+icon :{
+  width:22,
+  height :22,
+  margin :15,
+  
+},
 imageWidthList :{
  
   width : 100,
@@ -23,7 +29,7 @@ textStyle2 : {
 }, 
 splashTextFont: {
   textAlign: 'center', fontSize:50, alignSelf:'center', width:'100%', color:'red',
-  fontFamily: 'Amiko'
+  fontFamily: 'beauty'
 },
 
 welcomeTextStyle : {
@@ -31,7 +37,7 @@ welcomeTextStyle : {
   marginTop:10,
   color : '#ff5a66',
   fontSize:40,
-  fontFamily: 'Amiko'
+  fontFamily: 'beauty'
 },
 welcomeLoginText :{
   color:'white',
@@ -74,6 +80,19 @@ input : {
   marginBottom :10,
   padding:10
 },
+input2 : {
+  marginTop:10,
+  width:'60%',
+  borderWidth:1,
+  alignSelf:'center',
+  height:40,
+  borderRadius : 20,
+  color:'black',
+  marginBottom :10,
+  padding:10,
+  borderColor : 'white'
+},
+
 dropDown : {
   marginTop:0,
   width:'60%',

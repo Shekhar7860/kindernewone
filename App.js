@@ -20,7 +20,7 @@ const App = createStackNavigator({
     screen: Splash,
   },
   Welcome: {
-    screen: Welcome,
+    screen: Home,
   }, 
   Login: {
     screen: Login,
