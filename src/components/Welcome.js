@@ -3,13 +3,16 @@ import {View, Text, Image, TouchableOpacity} from 'react-native'
 import styles from "../styles/styles";
 import MapView from 'react-native-maps'
 import Loader from './Loader';
+import { strings } from './i18n';
+import I18n from 'react-native-i18n';
 export default class Welcome extends Component {
     constructor (props) {
         super (props)
         this.state = {
           email : "",
           password : "",
-          loading: false
+          loading: false,
+          currentLanguage: 'hi'
         }
        
       }
@@ -21,6 +24,8 @@ export default class Welcome extends Component {
         // setTimeout (() => this.setState({loading : false }), 2000)
       }
 render () { 
+  I18n.locale = this.state.currentLanguage;
+  I18n.fallbacks = true;
 return (<View style={styles.container}>
     <Image  style={styles.imageWidth} source={require('../images/kinder.jpg')} ></Image>
     <Text style={styles.textStyle}>for creative kids</Text>
