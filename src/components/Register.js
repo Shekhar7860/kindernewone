@@ -62,7 +62,7 @@ return (<View style={styles.container}>
     <TextInput style={styles.input} placeholder="User Name" onChangeText={(text)=>this.setState({ username:text})} placeholderTextColor = "black"></TextInput>
     <TextInput style={styles.input} placeholder="Password" onChangeText={(text)=>this.setState({ password:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
     <TextInput style={styles.input} placeholder="Confirm Password" onChangeText={(text)=>this.setState({ confirmPassword:text})} placeholderTextColor = "black" secureTextEntry={true}></TextInput>
-    <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Home')}>
+    <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Home2')}>
         <Text  style={styles.welcomeLoginText}>SignUp</Text>
         </TouchableOpacity>
         

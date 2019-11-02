@@ -70,6 +70,9 @@ export default class Login extends Component {
       );
     }
 
+    LoginGuest = () => {
+      this.props.navigation.navigate("Home2")
+    }
     LoginGoogle = () => {
       Alert.alert("Logging With Google")
     }
@@ -93,7 +96,7 @@ return (<View style={styles.container}>
    
     <TextInput value={this.state.email} onChangeText={(text)=>this.setState({ email:text})} style={styles.input} placeholder="Email"  placeholderTextColor = "black"></TextInput>
     <TextInput value={this.state.password} style={styles.input} onChangeText={(text)=>this.setState({ password:text})} placeholder="Password"  placeholderTextColor = "black" secureTextEntry={true}></TextInput>
-     <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Home')}>
+     <TouchableOpacity style={styles.buttonBackground} onPress={this.goToPage.bind(this, 'Home2')}>
         <Text  style={styles.welcomeLoginText}>Login</Text>
         </TouchableOpacity>
         <Text style={styles.textStyle2}>OR</Text>
@@ -102,6 +105,10 @@ return (<View style={styles.container}>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonBackgroundgplus} onPress={this.LoginGoogle.bind(this)}>
         <Text style={styles.textWhite} >Google</Text>
+        </TouchableOpacity>
+        <Text style={styles.textStyle2}>OR</Text>
+        <TouchableOpacity style={styles.buttonBackgroundGuest}  onPress={this.LoginGuest.bind(this, 'Home2')}>
+        <Text style={styles.textWhite}>Login As Guest</Text>
         </TouchableOpacity>
         </View>)} 
       

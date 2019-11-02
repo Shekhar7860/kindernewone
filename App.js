@@ -15,12 +15,13 @@ import Login from './src/components/Login'
 import Register from './src/components/Register'
 import SelectItems from './src/components/SelectItems'
 import Home from './src/components/Home'
+import Home2 from './src/components/Home2'
 const App = createStackNavigator({
   Splash: {
     screen: Splash,
   },
   Welcome: {
-    screen: Home,
+    screen: Welcome,
   }, 
   Login: {
     screen: Login,
@@ -33,6 +34,9 @@ const App = createStackNavigator({
   },
   Home: {
     screen: Home,
+  },
+  Home2: {
+    screen: Home2,
   }
 });
 
